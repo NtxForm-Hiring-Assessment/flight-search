@@ -1,5 +1,7 @@
 # FlightApp
 
+This is a sample application which simulates a flight search web application. The application gets some input from the user, makes a web service call and displays result to the user.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
 
 ## Development server
