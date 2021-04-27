@@ -1,0 +1,62 @@
+<div class="flights-container">
+    <div class="flights-container__search">
+        <div class="container search-flight">
+            <form [formGroup]="_form" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col col-12 col-sm-12 col-md-3">
+                <mat-form-field hintLabel="Max 3 characters" appearance="fill">
+                    <mat-label>Departure airport code</mat-label>
+                    <input matInput #input maxlength="3" placeholder="Departure airport code" formControlName="departure">
+                    <mat-error>{{getError('departure')}}</mat-error>
+                    <mat-hint align="end">{{input.value?.length || 0}}/3</mat-hint>
+                  </mat-form-field>
+              </div>
+              <div class="col col-12 col-sm-6 col-md-3">
+                <mat-form-field hintLabel="Max 3 characters" appearance="fill">
+                    <mat-label>Arrival airport code</mat-label>
+                    <input matInput #input maxlength="3" placeholder="Arrival airport code" formControlName="arrival">
+                    <mat-error>{{getError('arrival')}}</mat-error>
+                    <mat-hint align="end">{{input.value?.length || 0}}/3</mat-hint>
+                  </mat-form-field>
+              </div>
+              <div class="col col-12 col-sm-6 col-md-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Departure date</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="date" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error>This field is required!</mat-error>
+                  </mat-form-field>
+              </div>
+              <div class="col-12 col-sm-6 col-md-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Return date</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="returnDate" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <mat-error>This field is required!</mat-error>
+                  </mat-form-field>
+              </div>
+              <div class="col-12 search-flight__button">
+                  <button type="submit" class="btn" [ngClass]="formIsValid ? 'btn-primary' : 'btn-secondary'">Search Flights</button>
+                </div>
+            </div>
+        </form>
+          </div>
+        
+        
+    </div>
+    <div class="flights-container__results">
+        <div class="container-fluid" *ngIf="flights">
+            <div style="padding: 2rem 0;" [@photosAnimation]="flights.length">
+                <section class="flights" *ngFor="let flight of flights">
+                    <img [src]="flight.AirlineLogoAddress" [alt]="flight?.AirlineName" style="width: 25px;">
+                    <div class="airline-name" [innerHTML]="flight?.AirlineName" style="width: 200px;"></div>
+                    <div class="inbound-flight-duration" [innerHTML]="flight?.InboundFlightsDuration"></div>
+                    <div class="outbound-flight-duration" [innerHTML]="flight?.OutboundFlightsDuration"></div>
+                    <div class="amount">{{flight?.TotalAmount | currency: 'USD'}}</div>
+                </section>
+            </div>
+        </div>        
+    </div>
+</div>
