@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { selectFeatureCount } from 'src/app/store';
-import { IAppState } from 'src/app/store/app.interface';
+import { selectFeatureCount } from '../../store';
+import { IAppState } from '../../store/app.interface';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
-import { ISearchFlightFilters } from 'src/app/models/flight.model';
-import { loadFlights } from 'src/app/store/app.actions';
+import { ISearchFlightFilters } from '../../models/flight.model';
+import { loadFlights } from '../../store/app.actions';
 
 @Component({
   selector: 'app-flight',

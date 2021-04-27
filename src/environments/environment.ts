@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   development: true,
-  apiHost: "http://nmflightapi.azurewebsites.net/api/"
+  apiHost: "https://nmflightapi.azurewebsites.net/api/"
 };
 
 /*
